@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Set up a new view for State objects to perform
-all default RESTful API actions."""
+"""Set up a new view for State objects performing API actions."""
 from models import storage
 from models.state import State
 from api.v1.views import app_views
