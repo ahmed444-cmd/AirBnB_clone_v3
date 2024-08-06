@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module establishes a rule to deliver the app's status."""
+"""This module enforces a rule to return the application's status."""
 from flask import jsonify
 import models
 from api.v1.views import app_views
@@ -13,13 +13,13 @@ from models.user import User
 
 @app_views.route("/status", strict_slashes=False)
 def view_status():
-    """View function that returns data in JSON format."""
+    """View function that sends a JSON message."""
     return jsonify({"status": "OK"})
 
 
 @app_views.route("/stats", strict_slashes=False)
 def view_stats():
-    """View function that reterns the number of each object by type"""
+    """View function that retrieves object counts for each type."""
     return jsonify({
         "amenities": models.storage.count(Amenity),
         "cities": models.storage.count(City),
