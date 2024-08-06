@@ -1,8 +1,6 @@
 #!/usr/bin/python3
+"""Defines the BaseModel class
 """
-Defines the BaseModel class
-"""
-
 from datetime import datetime
 import models
 from os import getenv
@@ -28,7 +26,7 @@ class BaseModel:
         updated_at = Column(DateTime, default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
-        """Initialize of the base model"""
+        """Initialize of the base modele"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -54,13 +52,13 @@ class BaseModel:
                                          self.__dict__)
 
     def save(self):
-        """Modifies the attribute 'updated_at' with the current datetime"""
+        """Modifies the attribute 'updated_at' with the current date"""
         self.updated_at = datetime.utcnow()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """returns a dictionary containing entire keys/values of instance"""
+        """returns a dictionary containing keys&values of instance"""
         new_dict = self.__dict__.copy()
         if "created_at" in new_dict:
             new_dict["created_at"] = new_dict["created_at"].strftime(time)
